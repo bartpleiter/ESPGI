@@ -1,0 +1,12 @@
+.pio
+.vscode
+
+*.py
+!src/*.py
+backup*
+*.txt
+*.ipynb
+*.html
+*.pkl
+
+__pycache__
