@@ -11,3 +11,5 @@ The PCB project + schematic can be found in the PCB folder, the MPPT and inverte
 Note that a 230V to 7.18V (toroidal) transformer is required.
 
 ![Top view of the ESPGI PCB](PCB/PCB_render_top.png)
+
+![Bottom view of the ESPGI PCB](PCB/PCB_render_bottom.png)
