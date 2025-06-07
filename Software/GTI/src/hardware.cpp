@@ -49,9 +49,6 @@ void setup_hardware()
   pinMode(PIN_ALERT_U, INPUT);
   pinMode(PIN_ALERT_I, INPUT);
 
-  pinMode(PIN_POT1, INPUT);
-  pinMode(PIN_POT2, INPUT);
-
   pinMode(PIN_HIN_L, OUTPUT);
   pinMode(PIN_NLIN_L, OUTPUT);
   pinMode(PIN_HIN_N, OUTPUT);

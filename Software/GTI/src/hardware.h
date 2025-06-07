@@ -28,9 +28,6 @@
 #define PIN_UART_2_TX 17
 #define PIN_UART_2_RX 16
 
-#define PIN_POT1 15
-#define PIN_POT2 2
-
 // PWM definitions
 #define HIN_L_CHANNEL 0
 #define NLIN_L_CHANNEL 1

@@ -1,4 +1,5 @@
 #include "grid_control.h"
+#include "grid_telemetry.h"
 
 // -------------------- STATE VARIABLES --------------------
 GridState currentState = GridState::DISCONNECTED;

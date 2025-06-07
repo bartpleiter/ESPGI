@@ -1,7 +1,3 @@
-/* TODO for refactor:
-- Consistent camelCase vs snake_case for function names
-*/
-
 #include <Arduino.h>
 #include <esp_timer.h>
 #include <Wire.h>
@@ -17,6 +13,7 @@
 #include "grid_control.h"
 #include "pwm_control.h"
 #include "tasks.h"
+#include "wifi_manager.h"
 
 // Timing variables
 unsigned long last_ac_sample_time = 0;
@@ -61,7 +58,12 @@ void setup()
   Serial.begin(115200);
   setup_hardware();
   init_sensors(Wire, Wire1);
+  setupWiFiManager();
   init_pwm_control();
   init_grid_control();
   init_tasks();
 }
+
+
+
+

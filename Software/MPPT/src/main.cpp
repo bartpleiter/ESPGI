@@ -323,7 +323,9 @@ void setup_webserver() {
     json += "}";
     request->send(200, "application/json", json);
   });
-
+  server.onNotFound([](AsyncWebServerRequest *request) {
+    request->send(404, "text/plain", "Not Found");
+  });
   server.begin();
 }
 

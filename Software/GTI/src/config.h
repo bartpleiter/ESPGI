@@ -22,6 +22,7 @@
 // Derived time intervals (in milliseconds)
 #define INTERVAL_DEBUG_PRINT_MS (TIME_MILLIS_PER_SEC / FREQ_DEBUG_PRINT_HZ)
 #define INTERVAL_CONTROL_LOGIC_MS (TIME_MILLIS_PER_SEC / FREQ_CONTROL_LOGIC_HZ)
+#define INTERVAL_TELEMETRY_MS 1000
 
 #define AC_SAMPLE_SIZE 500 // AC sample buffer size, with sampling taking ~600us, this gives us ~250ms of data
 #define DC_SAMPLE_WINDOW_SIZE 100 // DC sample window size for averaging, with sampling every 10ms, this gives us 1 second of data
@@ -69,7 +70,7 @@
 #define PHASE_ADJ_STEP 0.005f            // Step size for phase adjustment in charge/discharge states
 #define AMPLITUDE_ADJ_STEP 0.01f         // Step size for amplitude adjustment
 #define MAX_AMPLITUDE_ADJ 0.75f          // Maximum amplitude adjustment in either direction
-#define MAX_PHASE_ADJ 0.2f               // Maximum phase adjustment in either direction
+#define MAX_PHASE_ADJ 0.3f               // Maximum phase adjustment in either direction
 #define DC_CURRENT_TARGET 2.0f           // Target DC current in amperes
 
 // Current amplitude thresholds for adjustment factors
