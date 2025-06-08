@@ -4,9 +4,9 @@
 #define DUTY_STEP 1
 #define MPPT_DELAY_MS 500
 #define SENSOR_SAMPLES 10
-#define MPPT_LOW_CURRENT_THRESHOLD 0.03 // In Amps. If the current is below this, the duty cycle will increase
-#define MAX_VOUT 13.6 // Maximum output voltage
-#define MIN_VIN 3.0 // Minimum input voltage to start MPPT
+#define MPPT_LOW_CURRENT_THRESHOLD 0.01 // In Amps. If the current is below this, the duty cycle will increase
+#define MAX_VOUT 13.4 // Maximum output voltage
+#define MIN_VIN 11.0 // Minimum input voltage to start MPPT
 
 #define OFFSET_IIN 0.0002 // Offset in Amps to add to the input current sensor
 #define OFFSET_IOUT_INA 0.0002 // Offset in Amps to add to the output current sensor (INA219)

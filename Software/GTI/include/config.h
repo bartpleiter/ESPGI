@@ -46,13 +46,13 @@
 #define REQUIRED_CONSEC_CHECKS_BEFORE_TIE 60 // Number of consecutive checks that need to pass before tying to grid
 #define MIN_GRID_VOLTAGE_AMPLITUDE_BEFORE_TIE 5.0f // Minimum grid voltage amplitude to consider grid tie
 #define MAX_DC_CURRENT_BEFORE_TIE 0.5f // Maximum DC current before considering grid tie
-#define MIN_DC_VOLTAGE_BEFORE_TIE 10.0f // Minimum DC voltage before considering grid tie
-#define MAX_DC_VOLTAGE_BEFORE_TIE 13.8f // Maximum DC voltage before considering grid tie
+#define MIN_DC_VOLTAGE_BEFORE_TIE 12.0f // Minimum DC voltage before considering grid tie
+#define MAX_DC_VOLTAGE_BEFORE_TIE 13.55f // Maximum DC voltage before considering grid tie
 
 // Safety thresholds after grid tie
 #define MIN_DC_VOLTAGE_AFTER_TIE 10.0f // Minimum battery voltage after grid tie
-#define MAX_DC_VOLTAGE_AFTER_TIE 14.0f // Max battery voltage (because AC voltage sensor amplitude)
-#define DC_CURRENT_THRESHOLD_AFTER_TIE 3.0f // Max DC current
+#define MAX_DC_VOLTAGE_AFTER_TIE 13.6f // Max battery voltage (<=14.0 because AC voltage sensor amplitude)
+#define DC_CURRENT_THRESHOLD_AFTER_TIE 3.5f // Max DC current
 #define MIN_GRID_VOLTAGE_AMPLITUDE_AFTER_TIE 5.0f // Minimum grid voltage amplitude after grid tie
 
 // Grid tie safety margins
@@ -61,9 +61,9 @@
 
 // Power control constants
 #define POWER_STATE_MIN_TIME_MS 10000 // Minimum time (ms) to stay in a power state before transitioning
-#define BATTERY_HIGH_VOLTAGE 12.8f    // Battery voltage above which to discharge
-#define BATTERY_LOW_VOLTAGE 12.2f     // Battery voltage below which to charge
-#define BATTERY_MEDIUM_VOLTAGE 12.5f  // Medium battery voltage threshold for state transitions
+#define BATTERY_HIGH_VOLTAGE 13.3f    // Battery voltage above which to discharge
+#define BATTERY_LOW_VOLTAGE 12.7f     // Battery voltage below which to charge
+#define BATTERY_MEDIUM_VOLTAGE 13.0f  // Medium battery voltage threshold for state transitions
 
 // Phase adjustment constants
 #define PHASE_ADJ_BASE_STEP 0.007f       // Base step size for phase adjustment in idle state

@@ -30,9 +30,10 @@ void setup() {
 
   // Setup wifi related components
   setup_wifi();
+  start_telemetry_task();
   start_wifi_monitor_task();
   setup_webserver();
-  start_telemetry_task();
+  
 
   // Setup sensors
   Wire.begin(PIN_SDA, PIN_SCL, I2C_FREQ);
