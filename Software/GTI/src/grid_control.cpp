@@ -116,12 +116,17 @@ bool checkGridStayConditions(ShutdownReason* reasonOut) {
 // -------------------- STATE HANDLING --------------------
 void handle_disconnected_state() {
   CannotTieReason reason = CannotTieReason::NONE;
-  if (checkGridTieConditions(&reason)) {
+  
+  // Only try to connect if battery voltage is outside the medium range
+  bool should_try_connect = (dc_voltage > BATTERY_HIGH_VOLTAGE) || (dc_voltage < BATTERY_LOW_VOLTAGE);
+  
+  if (should_try_connect && checkGridTieConditions(&reason)) {
     consecutive_valid_conditions++;
     if (consecutive_valid_conditions >= REQUIRED_CONSEC_CHECKS_BEFORE_TIE) {
       consecutive_valid_conditions = 0;
       tie_to_grid();
       power_state_start_time = millis(); // Reset the timer when we tie to the grid
+      power_control_state = PowerControlState::IDLE; // Always start in IDLE state
       currentState = GridState::CONNECTED;
     } else {
       // Conditions are met but we need more consecutive checks
@@ -129,6 +134,10 @@ void handle_disconnected_state() {
     }
   } else {
     consecutive_valid_conditions = 0;
+    // Set reason if we're not trying to connect due to battery voltage
+    if (!should_try_connect) {
+      reason = CannotTieReason::NONE; // Not trying to connect is not an error
+    }
   }
   // Update the global reason
   cannotTieReason = reason;
@@ -224,6 +233,13 @@ void handle_idle_state(float& amplitude_adjustment, float& phase_adjustment) {
       // Initialize with no amplitude adjustment
       amplitude_adjustment = 0.0f;
       phase_adjustment = global_zero_phase;
+    }
+    else if (dc_voltage >= BATTERY_LOW_VOLTAGE && dc_voltage <= BATTERY_HIGH_VOLTAGE) {
+      // Battery voltage is in the medium range, disconnect from grid
+      untie_from_grid();
+      currentState = GridState::DISCONNECTED;
+      power_state_start_time = current_time;
+      control_step_counter = 0;
     }
   }
 }
