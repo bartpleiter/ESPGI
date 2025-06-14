@@ -3,6 +3,7 @@
 #include <esp_timer.h>
 #include "config.h"
 #include "sine_fitting.h"
+#include "grid_control.h"
 
 // Timer interrupt handle
 hw_timer_t *spwm_timer = NULL;
@@ -11,6 +12,14 @@ portMUX_TYPE timerMux = portMUX_INITIALIZER_UNLOCKED;
 // ISR for the PLL PWM frequency
 void IRAM_ATTR onSPWMtimer() {
   portENTER_CRITICAL_ISR(&timerMux);
+  if (!should_try_connect && currentState != GridState::CONNECTED) {
+    // If not trying to connect and not connected, skip PWM update
+    shutdown_hbridge();
+
+    portEXIT_CRITICAL_ISR(&timerMux);
+    return;
+  }
+
   int64_t current_time = esp_timer_get_time();
   int32_t phase_shift_fp = PHASE_MATCH_OFFSET_FP + phase_shift_control_fp;
   int32_t predicted_voltage = predict_sine_value_fp(grid_voltage_sine_fit_fp, current_time, phase_shift_fp, amplitude_offset_control_fp);

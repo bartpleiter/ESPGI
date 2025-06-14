@@ -9,6 +9,7 @@ PowerControlState power_control_state = PowerControlState::IDLE;
 
 // -------------------- GRID TIE VARIABLES --------------------
 int consecutive_valid_conditions = 0;
+bool should_try_connect = false; // Whether we should attempt to connect to the grid
 
 // -------------------- POWER CONTROL VARIABLES --------------------
 float power_factor = 0.0f;
@@ -118,7 +119,7 @@ void handle_disconnected_state() {
   CannotTieReason reason = CannotTieReason::NONE;
   
   // Only try to connect if battery voltage is outside the medium range
-  bool should_try_connect = (dc_voltage > BATTERY_HIGH_VOLTAGE) || (dc_voltage < BATTERY_LOW_VOLTAGE);
+  should_try_connect = (dc_voltage > BATTERY_HIGH_VOLTAGE + CONNECT_VOLTAGE_TRESHOLD) || (dc_voltage < BATTERY_LOW_VOLTAGE - CONNECT_VOLTAGE_TRESHOLD);
   
   if (should_try_connect && checkGridTieConditions(&reason)) {
     consecutive_valid_conditions++;

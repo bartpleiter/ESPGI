@@ -73,6 +73,7 @@ extern PowerControlState power_control_state;
 
 // Grid tie variables
 extern int consecutive_valid_conditions;
+extern bool should_try_connect;
 
 // Power control variables
 extern float power_factor;

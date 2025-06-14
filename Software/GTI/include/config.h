@@ -62,8 +62,9 @@
 // Power control constants
 #define POWER_STATE_MIN_TIME_MS 10000 // Minimum time (ms) to stay in a power state before transitioning
 #define BATTERY_HIGH_VOLTAGE 13.3f    // Battery voltage above which to discharge
-#define BATTERY_LOW_VOLTAGE 12.7f     // Battery voltage below which to charge
-#define BATTERY_MEDIUM_VOLTAGE 13.0f  // Medium battery voltage threshold for state transitions
+#define BATTERY_LOW_VOLTAGE 12.5f     // Battery voltage below which to charge
+#define BATTERY_MEDIUM_VOLTAGE 12.8f  // Medium battery voltage threshold for state transitions
+#define CONNECT_VOLTAGE_TRESHOLD 0.08f // Voltage threshold for connecting to the grid to prevent rapid toggling
 
 // Phase adjustment constants
 #define PHASE_ADJ_BASE_STEP 0.007f       // Base step size for phase adjustment in idle state
