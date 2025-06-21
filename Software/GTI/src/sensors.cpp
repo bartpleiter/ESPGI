@@ -1,4 +1,5 @@
 #include "sensors.h"
+#include "config.h"
 
 // Define the global sensor objects
 Adafruit_INA219 ina_input(ADDR_INA_INPUT);
@@ -66,7 +67,7 @@ float get_dc_voltage_inverter() {
 // Get DC current from inverter using INA219
 float get_dc_current_inverter_ina() {
   float current = ina_input.getCurrent_mA() / 1000.0; // Fix for 0.01 Ohm shunt config
-  return current;
+  return current + INA_DC_OFFSET; // Add offset for calibration
 }
 
 // Get DC current from inverter using ACS sensor

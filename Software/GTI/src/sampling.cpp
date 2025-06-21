@@ -54,11 +54,11 @@ float calculate_average(float buffer[], int size, bool buffer_filled)
 void sample_dc_signals()
 {
   float new_dc_voltage = get_dc_voltage_inverter();
-  float new_dc_current_acs = get_dc_current_inverter_acs();
+  float new_dc_current_ina = get_dc_current_inverter_ina();
 
   // Update the sample buffers
   dc_voltage_samples[dc_sample_index] = new_dc_voltage;
-  dc_current_acs_samples[dc_sample_index] = new_dc_current_acs;
+  dc_current_ina_samples[dc_sample_index] = new_dc_current_ina;
   
   // Update the buffer index
   dc_sample_index = (dc_sample_index + 1) % DC_SAMPLE_WINDOW_SIZE;
@@ -68,13 +68,12 @@ void sample_dc_signals()
 
   // Calculate averages and update the global variables
   dc_voltage = calculate_average(dc_voltage_samples, DC_SAMPLE_WINDOW_SIZE, dc_buffer_filled);
-  //dc_current_ina = calculate_average(dc_current_ina_samples, DC_SAMPLE_WINDOW_SIZE, dc_buffer_filled);
-  dc_current_acs = calculate_average(dc_current_acs_samples, DC_SAMPLE_WINDOW_SIZE, dc_buffer_filled);
+  dc_current_ina = calculate_average(dc_current_ina_samples, DC_SAMPLE_WINDOW_SIZE, dc_buffer_filled);
 
   // For ISR use, convert voltage to fixed-point representation
   dc_voltage_fp = (int32_t)(dc_voltage * FP_ONE);
 
-  dc_current = dc_current_acs;
+  dc_current = dc_current_ina;
 }
 
 void sample_ac_signals()

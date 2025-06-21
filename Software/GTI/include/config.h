@@ -84,3 +84,6 @@
 #define PHASE_ADJ_FACTOR_SMALL 0.5f        // Adjustment factor for small steps
 #define PHASE_ADJ_FACTOR_MEDIUM 0.75f      // Adjustment factor for medium steps
 #define PHASE_ADJ_FACTOR_LARGE 1.0f        // Adjustment factor for large steps
+
+// Offset for sensor calibration
+#define INA_DC_OFFSET 0.0030f // Offset for INA current sensor calibration

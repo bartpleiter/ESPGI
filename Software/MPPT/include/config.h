@@ -1,6 +1,6 @@
 #pragma once
 
-#define USE_ACS_CURRENT_SENSOR true // Whether to use ACS current sensor instead of INA219
+#define USE_ACS_CURRENT_SENSOR false // Whether to use ACS current sensor instead of INA219
 #define DUTY_STEP 1
 #define MPPT_DELAY_MS 500
 #define SENSOR_SAMPLES 10
@@ -8,9 +8,9 @@
 #define MAX_VOUT 13.4 // Maximum output voltage
 #define MIN_VIN 11.0 // Minimum input voltage to start MPPT
 
-#define OFFSET_IIN 0.0002 // Offset in Amps to add to the input current sensor
-#define OFFSET_IOUT_INA 0.0002 // Offset in Amps to add to the output current sensor (INA219)
-#define OFFSET_IOUT_ACS 0.0060 // Offset in Amps to add to the output current sensor (ACS)
+#define OFFSET_IIN 0.0005 // Offset in Amps to add to the input current sensor
+#define OFFSET_IOUT_INA 0.0029 // Offset in Amps to add to the output current sensor (INA219)
+#define OFFSET_IOUT_ACS 0.0075 // Offset in Amps to add to the output current sensor (ACS)
 
 #define PIN_SDA 21
 #define PIN_SCL 22
